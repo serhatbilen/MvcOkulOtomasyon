@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+    <link href="~/Content/Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/sidebar-nav.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/jquery.toast.css" rel="stylesheet" />
+    <link href="~/Content/Css/morris.css" rel="stylesheet" />
+    <link href="~/Content/Css/style.css" rel="stylesheet" />
+    <link href="~/Content/Css/default-dark.css" rel="stylesheet" />
+    <link href="~/Content/Css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <!-- Left navbar-header -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                        <!-- input-group -->
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+
+                    <li class="nav-small-cap m-t-10">---Ana Menü</li>
+                    <li>
+                        <a href="index.html" class="waves-effect active"><i class="label-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Öğrenciler <span class="fa arrow"></span> <span class="label label-rouded label-custom pull-right"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li> <a href="@Url.Action("Liste", "Ogrenci")">Listele</a> </li>
+                            <li> <a class="ogrnciEkle" href="@Url.Action("Kaydet", "Ogrenci")">Ekle </a> </li>
+                        </ul>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-software fa-fw"></i> <span class="hide-menu">Öğretmenler<span class="fa arrow"></span> <span class="label label-rouded label-info pull-right"></span> </span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="@Url.Action("Liste", "Ogretmen")">Listele</a></li>
+                            <li><a href="@Url.Action("Kaydet", "Ogretmen")">Ekle</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- Left navbar-header end -->
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard 1</h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="@Url.Action("Index", "Home")">Ana Sayfa</a></li>
+                            <li class="active">@ViewBag.Title</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row white-box">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2016 &copy; Elite Admin brought to you by themedesigner.in </footer>
+    </div>
+    <div>
+    </div>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/sidebar-nav.min.js"></script>
+    <script src="~/Scripts/jquery.slimscroll.js"></script>
+    <script src="~/Scripts/waves.js"></script>
+    <script src="~/Scripts/jquery.waypoints.js"></script>
+    <script src="~/Scripts/jquery.counterup.min.js"></script>
+    <script src="~/Scripts/raphael-min.js"></script>
+    <script src="~/Scripts/morris.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/dashboard1.js"></script>
+    <script src="~/Scripts/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/jquery.charts-sparkline.js"></script>
+    <script src="~/Scripts/jquery.toast.js"></script>
+    <script src="~/Scripts/jQuery.style.switcher.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Ara ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change clear', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script src="~/Scripts/sweetalert2.min.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+</body>
+</html>

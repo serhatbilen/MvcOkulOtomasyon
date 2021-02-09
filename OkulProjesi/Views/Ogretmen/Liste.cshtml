@@ -1,0 +1,47 @@
+﻿@using OkulProjesi.Models.Entities
+@model List<Ogretmen>
+@{
+    ViewBag.Title = "Öğretmen Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Öğretmenler</h2>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Yaş</th>
+            <th>Cinsiyet</th>
+            <th>Öğrenci Sayısı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Ad</td>
+            <td>@item.Soyad</td>
+            <td>@item.Yas</td>
+            <td>@item.Yas</td>
+            <td>@item.ogrenciSayisi.Count()</td>
+            <th><a class="btn btn-primary" href="/Ogretmen/Guncelle/@item.Id">Güncelle</a></th>
+            <th><a class="btn btn-primary" href="/Ogretmen/Sil/@item.Id">Sil</a></th>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Yaş</th>
+            <th>Cinsiyet</th>
+            <th>Öğrenci Sayısı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,23 @@
+﻿@model OkulProjesi.Models.Entities.Ogretmen
+@{
+    ViewBag.Title = "Öğretmen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Öğretmen Kayıt Ekranı</h2>
+
+@using (Html.BeginForm("Kaydet", "Ogretmen", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.Ad)
+    @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+    @Html.LabelFor(m => m.Soyad)
+    @Html.TextBoxFor(m => m.Soyad, new { @class = "form-control" })
+    @Html.LabelFor(m => m.Yas)
+    @Html.TextBoxFor(m => m.Yas, new { @class = "form-control" })
+    @Html.LabelFor(m => m.Cinsiyet)
+    @Html.TextBoxFor(m => m.Cinsiyet, new { @class = "form-control" })
+</div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+}
